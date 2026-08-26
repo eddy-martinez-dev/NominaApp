@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="NominaApp.API/NominaApp.API.csproj" />
+  <Project Path="NominaApp.Core/NominaApp.Core.csproj" />
+  <Project Path="NominaApp.Infrastructure/NominaApp.Infrastructure.csproj" />
+  <Project Path="NominaApp.WPF/NominaApp.WPF.csproj" />
+</Solution>
