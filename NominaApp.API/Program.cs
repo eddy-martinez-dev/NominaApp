@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using NominaApp.Core.Interfaces;
+using NominaApp.Core.Services;
 using NominaApp.Infrastructure.Data;
 using NominaApp.Infrastructure.Repositories;
 
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<NominaDbContext>(options =>
 
 builder.Services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
 builder.Services.AddScoped<INominaRepository, NominaRepository>();
+builder.Services.AddScoped<ICalculadorNomina, CalculadorNomina>();
 
 
 builder.Services.AddControllers();
