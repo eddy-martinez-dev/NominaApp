@@ -15,6 +15,10 @@ builder.Services.AddDbContext<NominaDbContext>(options =>
 builder.Services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
 builder.Services.AddScoped<INominaRepository, NominaRepository>();
 builder.Services.AddScoped<ICalculadorNomina, CalculadorNomina>();
+builder.Services.AddScoped<IDepartamentoRepository, DepartamentoRepository>();
+builder.Services.AddScoped<IPuestoRepository, PuestoRepository>();
+builder.Services.AddScoped<IContratoRepository, ContratoRepository>();
+
 
 
 builder.Services.AddControllers();
