@@ -482,3 +482,7 @@ $RECYCLE.BIN/
 *.swp
 /NominaApp.API/nomina.db-shm
 /NominaApp.API/nomina.db-wal
+
+   *.db
+   *.db-shm
+   *.db-wal
