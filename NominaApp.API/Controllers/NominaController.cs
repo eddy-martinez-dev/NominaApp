@@ -11,14 +11,17 @@ public class NominaController : ControllerBase
     private readonly IEmpleadoRepository _empleadoRepository;
     private readonly INominaRepository _nominaRepository;
     private readonly ICalculadorNomina _calculadorNomina;
+    private readonly IConceptoNominaRepository _conceptoRepository;
 
     public NominaController(
         IEmpleadoRepository empleadoRepository,
         INominaRepository nominaRepository,
+        IConceptoNominaRepository conceptoNomina,
         ICalculadorNomina calculadorNomina)
     {
         _empleadoRepository = empleadoRepository;
         _nominaRepository = nominaRepository;
+        _conceptoRepository = conceptoNomina;
         _calculadorNomina = calculadorNomina;
     }
 
@@ -41,7 +44,7 @@ public class NominaController : ControllerBase
 
         // 3. Por ahora, sin asistencias ni conceptos (los agregamos cuando tengamos esos endpoints)
         var asistencias = new List<Core.Entities.Asistencia>();
-        var conceptos = new List<Core.Entities.ConceptoNomina>();
+        var conceptos = await _conceptoRepository.GetAllAsync();
 
         // 4. Calcular (aquí se usa el Result pattern)
         var resultado = _calculadorNomina.Calcular(empleado, contratoActivo, asistencias, conceptos, request.Periodo);

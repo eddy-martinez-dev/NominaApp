@@ -18,6 +18,7 @@ builder.Services.AddScoped<ICalculadorNomina, CalculadorNomina>();
 builder.Services.AddScoped<IDepartamentoRepository, DepartamentoRepository>();
 builder.Services.AddScoped<IPuestoRepository, PuestoRepository>();
 builder.Services.AddScoped<IContratoRepository, ContratoRepository>();
+builder.Services.AddScoped<IConceptoNominaRepository, ConceptoNominaRepository>();
 
 
 
