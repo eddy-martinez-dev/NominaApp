@@ -480,3 +480,5 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+/NominaApp.API/nomina.db-shm
+/NominaApp.API/nomina.db-wal
