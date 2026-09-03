@@ -5,5 +5,6 @@
     <Application.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+        <converters:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter"/>
     </Application.Resources>
 </Application>

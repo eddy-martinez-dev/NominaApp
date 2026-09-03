@@ -16,6 +16,8 @@
             <Button Content="Cargar Empleados"
                     Command="{Binding CargarEmpleadosCommand}"
                     Margin="16,0,0,0" Padding="10,4"/>
+            <Button Content="Ir a Nómina" Click="AbrirNomina_Click"
+                    Margin="8,0,0,0" Padding="10,4"/>
         </StackPanel>
 
         <!-- Estado de carga / error -->

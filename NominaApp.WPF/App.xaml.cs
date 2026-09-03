@@ -27,6 +27,18 @@ public partial class App : Application
 
                 services.AddTransient<EmpleadoListViewModel>();
                 services.AddTransient<MainWindow>();
+
+                services.AddHttpClient<INominaApiService, NominaApiService>(client =>
+                {
+                    client.BaseAddress = new Uri("https://localhost:7174/");
+                })
+                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
+                });
+
+                services.AddTransient<NominaViewModel>();
+                services.AddTransient<Views.NominaWindow>();
             })
             .Build();
     }
@@ -47,4 +59,6 @@ public partial class App : Application
         _host.Dispose();
         base.OnExit(e);
     }
+
+    public IServiceProvider Services => _host.Services;
 }

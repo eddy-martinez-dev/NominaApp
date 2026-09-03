@@ -18,8 +18,4 @@
     <ProjectReference Include="..\NominaApp.Core\NominaApp.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
-
 </Project>
