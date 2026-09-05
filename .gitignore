@@ -482,7 +482,7 @@ $RECYCLE.BIN/
 *.swp
 /NominaApp.API/nomina.db-shm
 /NominaApp.API/nomina.db-wal
-
+Comprobantes/
    *.db
    *.db-shm
    *.db-wal
