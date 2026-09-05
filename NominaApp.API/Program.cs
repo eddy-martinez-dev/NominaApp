@@ -3,8 +3,12 @@ using NominaApp.Core.Interfaces;
 using NominaApp.Core.Services;
 using NominaApp.Infrastructure.Data;
 using NominaApp.Infrastructure.Repositories;
+using QuestPDF.Infrastructure;
+using NominaApp.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+QuestPDF.Settings.License = LicenseType.Community;
 
 // Add services to the container.
 
@@ -19,6 +23,7 @@ builder.Services.AddScoped<IDepartamentoRepository, DepartamentoRepository>();
 builder.Services.AddScoped<IPuestoRepository, PuestoRepository>();
 builder.Services.AddScoped<IContratoRepository, ContratoRepository>();
 builder.Services.AddScoped<IConceptoNominaRepository, ConceptoNominaRepository>();
+builder.Services.AddScoped<IComprobanteService, ComprobanteService>();
 
 
 

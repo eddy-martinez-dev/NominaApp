@@ -12,16 +12,19 @@ public class NominaController : ControllerBase
     private readonly INominaRepository _nominaRepository;
     private readonly ICalculadorNomina _calculadorNomina;
     private readonly IConceptoNominaRepository _conceptoRepository;
+    private readonly IComprobanteService _comprobanteService;
 
     public NominaController(
         IEmpleadoRepository empleadoRepository,
         INominaRepository nominaRepository,
         IConceptoNominaRepository conceptoNomina,
+        IComprobanteService comprobanteService,
         ICalculadorNomina calculadorNomina)
     {
         _empleadoRepository = empleadoRepository;
         _nominaRepository = nominaRepository;
         _conceptoRepository = conceptoNomina;
+        _comprobanteService = comprobanteService;
         _calculadorNomina = calculadorNomina;
     }
 
@@ -73,5 +76,21 @@ public class NominaController : ControllerBase
         var nombreEmpleado = empleado is not null ? $"{empleado.Nombre} {empleado.Apellido}" : "Desconocido";
 
         return Ok(NominaMapper.ToDto(nomina, nombreEmpleado));
+    }
+
+    [HttpGet("{id}/comprobante")]
+    public async Task<IActionResult> ObtenerComprobante(int id)
+    {
+        var nomina = await _nominaRepository.GetWithDetallesAsync(id);
+        if (nomina is null)
+            return NotFound();
+
+        var empleado = await _empleadoRepository.GetByIdAsync(nomina.EmpleadoId);
+        var nombreEmpleado = empleado is not null ? $"{empleado.Nombre} {empleado.Apellido}" : "Desconocido";
+
+        var pdfBytes = _comprobanteService.GenerarPdf(nomina, nombreEmpleado);
+        _comprobanteService.GuardarEnDisco(pdfBytes, id); // respaldo en el servidor
+
+        return File(pdfBytes, "application/pdf", $"comprobante_nomina_{id}.pdf");
     }
 }
