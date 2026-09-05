@@ -34,4 +34,12 @@ public class NominaApiService : INominaApiService
 
         return await response.Content.ReadFromJsonAsync<NominaModel>();
     }
+
+    public async Task<byte[]?> DescargarComprobanteAsync(int nominaId)
+    {
+        var response = await _httpClient.GetAsync($"api/nomina/{nominaId}/comprobante");
+        if (!response.IsSuccessStatusCode) return null;
+
+        return await response.Content.ReadAsByteArrayAsync();
+    }
 }

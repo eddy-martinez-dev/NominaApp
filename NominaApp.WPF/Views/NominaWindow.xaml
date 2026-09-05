@@ -48,6 +48,10 @@
                     <DataGridTextColumn Header="Monto" Binding="{Binding Monto, StringFormat=C}" Width="100"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <Button Content="Exportar Comprobante (PDF)" 
+                    Command="{Binding ExportarComprobanteCommand}" 
+                    Margin="0,8,0,0" Padding="10,4"/>
         </StackPanel>
+        
     </Grid>
 </Window>

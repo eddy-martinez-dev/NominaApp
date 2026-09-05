@@ -8,4 +8,5 @@ public interface INominaApiService
 {
     Task<(bool EsExitoso, NominaModel? Nomina, string? Error)> GenerarAsync(GenerarNominaModel request);
     Task<NominaModel?> ObtenerPorIdAsync(int id);
+    Task<byte[]?> DescargarComprobanteAsync(int nominaId);
 }
